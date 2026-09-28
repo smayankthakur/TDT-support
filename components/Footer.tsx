@@ -89,7 +89,7 @@ const Footer = () => {
 
   const quickLinks = [
     { nameKey: 'footer.quickLinks.about', name: 'About', href: 'https://thedivinetarotonline.com/about' },
-    { nameKey: 'footer.quickLinks.readings', name: 'Support', href: 'https://support.thedivinetarotonline.com/' },
+    { nameKey: 'footer.quickLinks.support', name: 'Support', href: 'https://support.thedivinetarotonline.com/' },
     // { nameKey: 'footer.quickLinks.premium', name: 'Premium', href: 'https://reading.thedivinetarotonline.com/?upgrade=1' },
   ];
 
