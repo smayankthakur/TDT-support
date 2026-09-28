@@ -10,9 +10,9 @@ const config: Config = {
         ink: '#050505',
       },
       fontFamily: {
-        sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-heading)', 'Georgia', 'serif'],
-        heading: ['var(--font-heading)', 'Georgia', 'serif'],
+        sans: ['var(--font-body)', 'var(--font-deva)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-heading)', 'var(--font-deva)', 'Georgia', 'serif'],
+        heading: ['var(--font-heading)', 'var(--font-deva)', 'Georgia', 'serif'],
       },
     },
   },

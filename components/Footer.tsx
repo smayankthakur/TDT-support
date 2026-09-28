@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -33,7 +33,7 @@ const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
-  const { t, isHydrated } = useLanguage();
+  const { t } = useLanguage();
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -44,13 +44,13 @@ const Footer = () => {
     e.preventDefault();
 
     if (!validateEmail(email)) {
-      setError('Please enter a valid email address');
+      setError(t('footer.errEmail'));
       return;
     }
 
     const trimmedPhone = phone.replace(/[^\d+]/g, '');
     if (trimmedPhone && trimmedPhone.replace(/\D/g, '').length < 10) {
-      setError('Please enter a valid WhatsApp number, or leave it blank.');
+      setError(t('footer.errPhone'));
       return;
     }
 
@@ -71,19 +71,14 @@ const Footer = () => {
         setTimeout(() => setIsSuccess(false), 3000);
       } else {
         const data = await response.json();
-        setError(data.message || 'Something went wrong. Please try again.');
+        setError(data.message || t('footer.errGeneric'));
       }
     } catch (err) {
-      setError('Network error. Please try again.');
+      setError(t('footer.errNetwork'));
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  useEffect(() => {
-    const yearEl = document.getElementById('footer-year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear().toString();
-  }, []);
 
   const socialLinks = [
     { name: 'Instagram', href: 'https://instagram.com/thedivineetarot', icon: InstagramIcon },
@@ -99,9 +94,9 @@ const Footer = () => {
   ];
 
   const trustItems = [
-    { icon: Lock, text: 'Secure & Private Readings' },
-    { icon: Heart, text: 'Trusted by 7L+ Seekers' },
-    { icon: Sparkles, text: 'Authentic Spiritual Guidance' },
+    { icon: Lock, text: t('footer.trust.secure') },
+    { icon: Heart, text: t('footer.trust.trusted') },
+    { icon: Sparkles, text: t('footer.trust.authentic') },
   ];
 
   return (
@@ -114,17 +109,17 @@ const Footer = () => {
             </div>
             <div>
               <h3 className="font-serif text-lg font-bold text-[#EAEAF0]">The Divine Tarot</h3>
-              <p className="text-amber-500/70 text-xs uppercase tracking-wider">Premium Tarot Guidance</p>
+              <p className="text-amber-500/70 text-xs uppercase tracking-wider">{t('footer.tagline')}</p>
             </div>
           </div>
           <p className="text-[#A1A1AA] text-sm leading-relaxed">
-            {isHydrated ? t('footer.description') : 'Guiding your path with clarity, intuition, and spiritual insight.'}
+            {t('footer.description')}
           </p>
         </div>
 
         <div className="flex flex-col gap-3">
           <h4 className="font-serif text-sm uppercase tracking-wider text-[#A1A1AA] mb-2">
-            {isHydrated ? t('footer.quickLinks.title') : 'Quick Links'}
+            {t('footer.quickLinks.title')}
           </h4>
           <ul className="space-y-2">
             {quickLinks.map((link) => (
@@ -134,7 +129,7 @@ const Footer = () => {
                   className="text-[#A1A1AA] hover:text-amber-500 transition-colors duration-200 flex items-center gap-2 group text-sm"
                 >
                   <span className="w-1 h-1 rounded-full bg-amber-500/20 group-hover:bg-amber-500 transition-colors flex-shrink-0" />
-                  {isHydrated ? t(link.nameKey) : link.name}
+                  {t(link.nameKey)}
                 </a>
               </li>
             ))}
@@ -142,7 +137,7 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-3">
-          <h4 className="font-serif text-sm uppercase tracking-wider text-[#A1A1AA] mb-2">Connect With Us</h4>
+          <h4 className="font-serif text-sm uppercase tracking-wider text-[#A1A1AA] mb-2">{t('footer.connect')}</h4>
           <div className="flex gap-4 flex-wrap">
             {socialLinks.map((item) => (
               <a
@@ -158,12 +153,12 @@ const Footer = () => {
             ))}
           </div>
           <Link href="/privacy" className="mt-3 text-xs text-[#A1A1AA]/70 hover:text-amber-500 transition-colors w-fit">
-            {isHydrated ? t('footer.privacy') : 'Privacy Policy'}
+            {t('footer.privacyPolicy')}
           </Link>
         </div>
 
         <div className="flex flex-col gap-3">
-          <h4 className="font-serif text-sm uppercase tracking-wider text-[#A1A1AA]">Get Daily Divine Insights</h4>
+          <h4 className="font-serif text-sm uppercase tracking-wider text-[#A1A1AA]">{t('footer.newsletter.title')}</h4>
           <form onSubmit={handleSubmit} className="space-y-3">
             <input
               type="email"
@@ -172,10 +167,10 @@ const Footer = () => {
                 setEmail(e.target.value);
                 setError('');
               }}
-              placeholder="Your email"
+              placeholder={t('footer.newsletter.email')}
               className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-[#EAEAF0] placeholder-[#A1A1AA] focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all text-sm"
               disabled={isSubmitting || isSuccess}
-              aria-label="Email for daily insights"
+              aria-label={t('footer.newsletter.emailLabel')}
             />
             <input
               type="tel"
@@ -184,10 +179,10 @@ const Footer = () => {
                 setPhone(e.target.value);
                 setError('');
               }}
-              placeholder="WhatsApp number (optional)"
+              placeholder={t('footer.newsletter.phone')}
               className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-[#EAEAF0] placeholder-[#A1A1AA] focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-all text-sm"
               disabled={isSubmitting || isSuccess}
-              aria-label="WhatsApp number for daily insights (optional)"
+              aria-label={t('footer.newsletter.phoneLabel')}
             />
             <button
               type="submit"
@@ -200,7 +195,7 @@ const Footer = () => {
                   : 'bg-amber-500 text-black hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20'
               }`}
             >
-              {isSuccess ? 'Subscribed!' : isSubmitting ? 'Subscribing...' : 'Subscribe'}
+              {isSuccess ? t('footer.subscribed') : isSubmitting ? t('footer.subscribing') : t('footer.subscribe')}
             </button>
           </form>
           {error && <p className="text-red-400 text-xs" role="alert">{error}</p>}
@@ -220,7 +215,7 @@ const Footer = () => {
 
       <div className="border-t border-white/10 mt-4 pt-6 flex flex-col md:flex-row justify-between text-sm text-gray-400 px-6">
         <div>
-          Designed by{' '}
+          {t('footer.designedBy')}{' '}
           <a
             href="https://sitelytc.com/"
             target="_blank"
@@ -232,10 +227,10 @@ const Footer = () => {
         </div>
         <div className="flex items-center gap-4 mt-2 md:mt-0">
           <Link href="/privacy" className="text-gray-400 hover:text-amber-400 transition-colors duration-200">
-            {isHydrated ? t('footer.privacy') : 'Privacy'}
+            {t('footer.privacy')}
           </Link>
           <span className="w-px h-3 bg-white/10" />
-          <span id="footer-year">&copy; {new Date().getFullYear()} The Divine Tarot. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} The Divine Tarot. {t('footer.rights')}</span>
         </div>
       </div>
     </footer>

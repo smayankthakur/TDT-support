@@ -23,7 +23,7 @@ const CTA_HREF = 'https://reading.thedivinetarotonline.com/';
 
 export default function Header() {
   const pathname = usePathname();
-  const { isHydrated, t } = useLanguage();
+  const { t } = useLanguage();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -134,13 +134,13 @@ export default function Header() {
               href={CTA_HREF}
               className="hidden xl:inline-flex items-center justify-center whitespace-nowrap bg-gradient-to-r from-[#FF4D4D] to-[#FFD700] text-black font-semibold rounded-full px-5 py-2 text-sm hover:scale-105 transition-transform active:scale-95"
             >
-              {isHydrated ? t('nav.askQuestion') : 'Ask your question here'}
+              {t('nav.askQuestion')}
             </a>
 
             <button
               className="xl:hidden p-2 text-white min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors active:scale-95"
               onClick={() => setIsMobileOpen(true)}
-              aria-label="Open menu"
+              aria-label={t('nav.openMenu')}
             >
               <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
@@ -166,14 +166,14 @@ export default function Header() {
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               role="dialog"
-              aria-label="Mobile navigation menu"
+              aria-label={t('nav.mobileNav')}
             >
               <div className="flex h-16 items-center justify-between px-6">
-                <span className="font-heading text-lg font-semibold text-white">Menu</span>
+                <span className="font-heading text-lg font-semibold text-white">{t('nav.menu')}</span>
                 <button
                   onClick={() => setIsMobileOpen(false)}
                   className="p-2 text-white min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
-                  aria-label="Close menu"
+                  aria-label={t('nav.closeMenu')}
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -191,7 +191,7 @@ export default function Header() {
                         rel="noopener noreferrer"
                         onClick={() => setIsMobileOpen(false)}
                         className="py-3 px-4 text-base text-white/70 hover:text-white hover:bg-white/5 transition-colors rounded-lg min-h-[44px] flex items-center"
-                        aria-label={getNavLabel(link.labelKey) + ' (opens in new tab)'}
+                        aria-label={`${getNavLabel(link.labelKey)} (${t('nav.newTab')})`}
                       >
                         {getNavLabel(link.labelKey)}
                       </a>
@@ -222,7 +222,7 @@ export default function Header() {
                     onClick={() => setIsMobileOpen(false)}
                     className="block w-full text-center bg-gradient-to-r from-[#FF4D4D] to-[#FFD700] text-black font-semibold rounded-xl px-5 py-3 min-h-[48px] flex items-center justify-center"
                   >
-                    {isHydrated ? t('nav.askQuestion') : 'Ask your question here'}
+                    {t('nav.askQuestion')}
                   </a>
                 </div>
               </nav>
