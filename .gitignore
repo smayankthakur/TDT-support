@@ -2,3 +2,8 @@ node_modules
 .next
 .env*.local
 next-env.d.ts
+
+# local-only files
+*.tgz
+*.zip
+.kilo/

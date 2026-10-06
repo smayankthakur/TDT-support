@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 
-const SCRIPT_URL =
-  process.env.SUPPORT_SCRIPT_URL ||
-  'https://script.google.com/macros/s/AKfycbxTORdBwBPxISkYarVlJiSVzMF-ZOFwWhLyZ50k82O1jGWhFjdRiVll5dHP9bhTfo_7vA/exec';
+// Google Apps Script web-app URL (deployed from dev.thedivinetarot111@gmail.com).
+// Set SUPPORT_SCRIPT_URL in .env.local and in Vercel → Settings → Environment Variables.
+// No hardcoded fallback on purpose, so tickets can never silently go to an old deployment.
+const SCRIPT_URL = process.env.SUPPORT_SCRIPT_URL;
 
 const ISSUES = ['login_after_sub', 'billing', 'technical', 'other'];
 const MAX_IMAGE_CHARS = 3_500_000; // ~2.5 MB file after base64
@@ -29,6 +30,11 @@ export async function POST(req: Request) {
     if (img && (typeof img !== 'string' || img.length > MAX_IMAGE_CHARS)) {
       return NextResponse.json({ status: 'error', message: 'Screenshot is too large' }, { status: 413 });
     }
+  }
+
+  if (!SCRIPT_URL) {
+    console.error('[support] SUPPORT_SCRIPT_URL is not set');
+    return NextResponse.json({ status: 'error', message: 'Support desk is not configured' }, { status: 500 });
   }
 
   try {
