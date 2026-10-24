@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 // The Divine Tarot app's privacy policy: same text as the app (tdt-app-2: src/data/legal.ts). Keep the two in step.
-const UPDATED = "13 Oct 2026";
+const UPDATED = "16 Oct 2026";
 const SECTIONS: { h: string; p: string[] }[] = [
   {
     "h": "",
@@ -18,15 +18,18 @@ const SECTIONS: { h: string; p: string[] }[] = [
   {
     "h": "1. Information we collect",
     "p": [
-      "Account: if you create an account or log in, your email address, your name and your password. The password is stored only in scrambled (\"hashed\") form — nobody can read it. The account is the same as Ginni Ki Baatein on our website (reading.thedivinetarotonline.com), so your Ginni Premium is shared between the App and that website.",
+      "Account: if you create an account or log in, your email address, your name and your password. The password is stored only in scrambled (\"hashed\") form — nobody can read it. The account is the same as Ginni Ki Baatein on our website (reading.thedivinetarotonline.com), and Ginni Unlimited (bought in the App) and Ginni Premium (bought on the website) both work in the App and on that website.",
       "Profile details you choose to enter (all optional): gender, date, time and place of birth, marital status, occupation and a profile photo. They are used to personalise your readings.",
       "Saved readings: the question you typed, the topic, the cards drawn and the date. If you are logged in they are saved to your account so they appear on your other phones.",
       "Purchases: which product you bought, the amount, the date, the Razorpay order and payment IDs, and until when it is active. We never see or store your card, UPI or bank details — Razorpay handles those.",
       "Personal Reading bookings: after you pay, the form asks for your name, WhatsApp number, email, place, date and time of birth and a photo, and the same for up to two other people you ask about, plus your concern. These go to our reader so she can prepare your reading, and your slot and Google Meet link are emailed to you.",
       "Support requests: your name, email, the problem you describe and any screenshots you attach.",
-      "Usage data (optional, ON by default): each time the App opens we may record the date and time, a random session code, platform, operating-system version, device model, app version, App language and, if logged in, your user ID. Turn it off any time in Profile → Privacy. Your questions, readings and profile are never sent with it.",
+      "Newsletter (optional): if you subscribe on the Home screen, your email and, if you add it, your WhatsApp number, so we can send daily insights, course news and offers. You can unsubscribe from any email.",
+      "Usage data (optional, ON by default): each time the App opens we may record the date and time, a random session code, platform, operating-system version, device model, app version, App language and, if logged in, your user ID; and which steps you reach in the App (for example: opened the App, started a reading, saw a price, paid, shared), with a random install code and labels such as the product or screen. Turn it off any time in Profile → Privacy. Your questions, readings and profile are never sent with it.",
+      "Crash reports: if the App crashes or hits an error, a technical report (error details, app version, phone model and operating system) is sent to our crash-reporting provider so we can fix it. It contains no name, email, IP address, questions or readings.",
+      "Invites: if you enter a friend’s invite code when you sign up, we record who invited you. No reward is given in the App.",
       "Approximate location (optional, OFF by default): only if you turn on Profile → Privacy → Share approximate city and allow location permission, we record your city, state and country — never your exact position.",
-      "Stored only on your phone: Kundli Milan names and birth details, your daily card, streak and reminder settings. Reminders are scheduled on your phone; we do not run a push-notification server."
+      "Stored only on your phone: Kundli Milan names and birth details, your daily card, streak and badges, the Moon sign you pick for your horoscope, the city you choose for Panchang, your journal entries and moods, your mantra and meditation counts, and reminder settings. Journal entries are never sent to us (only your phone’s own backup, if you have it on, may include them) and are removed from the phone when you log out. Your horoscope, numerology and Panchang are worked out on your phone. Reminders (daily card, streak, festivals, journal) are scheduled on your phone; we do not run a push-notification server."
     ]
   },
   {
@@ -39,17 +42,18 @@ const SECTIONS: { h: string; p: string[] }[] = [
   {
     "h": "3. Who processes it",
     "p": [
-      "Supabase (database, login and server functions): account, profile, saved readings, purchases.",
+      "Supabase (database, login and server functions): account, profile, saved readings, purchases, and usage steps (when usage data is on).",
+      "Sentry: crash reports.",
       "Razorpay: payments.",
       "Google (Firebase, Calendar, Sheets and Drive): Personal Reading bookings, Google Meet links, support tickets and optional usage records.",
-      "Our email providers (including Resend): booking confirmations, support replies and password-reset emails.",
+      "Our email providers (including Resend): booking confirmations, support replies, password-reset emails and the newsletter.",
       "These providers process data for us under their own terms and security measures, and their servers may be outside India."
     ]
   },
   {
     "h": "4. How long we keep it",
     "p": [
-      "Account, profile and saved readings: until you delete your account (or a reading). Purchase and booking payment records: as long as Indian tax and accounting law requires, even after account deletion. Booking details: as long as needed to hold and follow up your reading. Usage records: up to 24 months, then deleted or made fully anonymous."
+      "Account, profile and saved readings: until you delete your account (or a reading). Purchase and booking payment records: as long as Indian tax and accounting law requires, even after account deletion. Booking details: as long as needed to hold and follow up your reading. Usage records: up to 24 months, then deleted or made fully anonymous. Crash reports: up to 90 days."
     ]
   },
   {

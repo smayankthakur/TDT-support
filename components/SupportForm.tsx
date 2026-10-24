@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Mail, RefreshCcw, Send, AlertCircle, UploadCloud, ChevronDown, X } from 'lucide-react';
@@ -271,6 +272,12 @@ export default function SupportForm() {
               </>
             )}
           </button>
+          <p className="text-center text-xs text-slate-500">
+            {t('support.privacyNote')}{' '}
+            <Link href="/privacy" className="underline hover:text-amber-400">
+              {t('footer.privacyPolicy')}
+            </Link>
+          </p>
         </form>
       )}
     </section>

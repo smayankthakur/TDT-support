@@ -51,6 +51,7 @@ export async function POST(req: Request) {
         errorScreenshot: errorScreenshot || null,
       }),
       redirect: 'follow',
+      signal: AbortSignal.timeout(25_000),
     });
     const result = await res.json();
     if (result.status === 'success') return NextResponse.json({ status: 'success' });

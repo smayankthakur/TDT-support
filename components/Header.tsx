@@ -51,10 +51,10 @@ export default function Header() {
 
   const isLinkActive = (href: string): boolean => {
     try {
+      // Same answer on the server and in the browser (no window check), so hydration matches:
+      // a full URL is only "here" when it points at this support site.
       const url = new URL(href);
-      if (typeof window !== 'undefined' && window.location.hostname !== url.hostname) {
-        return false;
-      }
+      if (url.hostname !== 'support.thedivinetarotonline.com') return false;
       return pathname === url.pathname;
     } catch {
       return pathname === href;
