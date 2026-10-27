@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 // The Divine Tarot app's privacy policy: same text as the app (tdt-app-2: src/data/legal.ts). Keep the two in step.
-const UPDATED = "16 Oct 2026";
+const UPDATED = "27 Oct 2026";
 const SECTIONS: { h: string; p: string[] }[] = [
   {
     "h": "",
@@ -22,7 +22,8 @@ const SECTIONS: { h: string; p: string[] }[] = [
       "Profile details you choose to enter (all optional): gender, date, time and place of birth, marital status, occupation and a profile photo. They are used to personalise your readings.",
       "Saved readings: the question you typed, the topic, the cards drawn and the date. If you are logged in they are saved to your account so they appear on your other phones.",
       "Purchases: which product you bought, the amount, the date, the Razorpay order and payment IDs, and until when it is active. We never see or store your card, UPI or bank details — Razorpay handles those.",
-      "Personal Reading bookings: after you pay, the form asks for your name, WhatsApp number, email, place, date and time of birth and a photo, and the same for up to two other people you ask about, plus your concern. These go to our reader so she can prepare your reading, and your slot and Google Meet link are emailed to you.",
+      "Ginni chat: the last 30 messages of your chat with Ginni are kept only on your phone (not on our servers), so they are there when you come back. They are deleted when you log out. Your readings themselves are saved to your account as described above.",
+      "Personal Reading bookings: before you pay we ask for your email; after you pay, the form asks for your name, WhatsApp number, email (confirmed with a one-time code), place, date and time of birth and a photo, and the same for up to two other people you ask about, plus your concern. These go to our reader so she can prepare your reading, and your slot and Google Meet link are emailed to you.",
       "Support requests: your name, email, the problem you describe and any screenshots you attach.",
       "Newsletter (optional): if you subscribe on the Home screen, your email and, if you add it, your WhatsApp number, so we can send daily insights, course news and offers. You can unsubscribe from any email.",
       "Usage data (optional, ON by default): each time the App opens we may record the date and time, a random session code, platform, operating-system version, device model, app version, App language and, if logged in, your user ID; and which steps you reach in the App (for example: opened the App, started a reading, saw a price, paid, shared), with a random install code and labels such as the product or screen. Turn it off any time in Profile → Privacy. Your questions, readings and profile are never sent with it.",
