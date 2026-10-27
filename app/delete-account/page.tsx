@@ -47,7 +47,7 @@ export default function DeleteAccountPage() {
           <p>
             A record of each payment (order ID, amount, date) is kept without your account for as long as Indian tax and
             accounting law requires. Personal Reading booking records are kept as long as needed to hold and follow up
-            the reading. Questions: <a className="text-gold underline" href="mailto:thedivinetarot111@gmail.com">thedivinetarot111@gmail.com</a>.
+            the reading. Questions: <a className="text-gold underline" href="/">raise a support ticket</a>.
           </p>
         </section>
       </main>

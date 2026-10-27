@@ -62,7 +62,7 @@ const SECTIONS: { h: string; p: string[] }[] = [
     "p": [
       "Delete your account in the App: Profile → Delete account. This permanently deletes your login, profile, saved readings and purchases from our servers — and, because it is the same account, your Ginni Ki Baatein login on the website. A record of each payment is kept, without your account, as explained above.",
       "Turn usage data or location sharing on or off in Profile → Privacy, and edit your profile any time.",
-      "You can ask us to access, correct or erase your personal data, or raise a grievance, by writing to thedivinetarot111@gmail.com. We reply within 30 days.",
+      "You can ask us to access, correct or erase your personal data, or raise a grievance, by raising a support ticket (Profile → Help & support in the App, or support.thedivinetarotonline.com). We reply within 30 days.",
       "If you use the App without logging in, your data stays on your phone; uninstalling the App removes it."
     ]
   },
@@ -93,7 +93,7 @@ const SECTIONS: { h: string; p: string[] }[] = [
   {
     "h": "10. Contact",
     "p": [
-      "The Divine Tarot · thedivinetarot111@gmail.com · WhatsApp +91 88281 16545"
+      "The Divine Tarot · Contact us only through a support ticket: Profile → Help & support in the App, or support.thedivinetarotonline.com."
     ]
   }
 ];

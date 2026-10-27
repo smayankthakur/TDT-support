@@ -41,7 +41,7 @@ export default function DeleteAccountForm() {
       setState('sent');
     } catch {
       setState('error');
-      setError('Could not send. Please try again, or email thedivinetarot111@gmail.com.');
+      setError('Could not send. Please try again in a few minutes.');
     }
   };
 
