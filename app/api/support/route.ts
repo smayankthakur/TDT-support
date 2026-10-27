@@ -54,7 +54,11 @@ export async function POST(req: Request) {
       signal: AbortSignal.timeout(25_000),
     });
     const result = await res.json();
-    if (result.status === 'success') return NextResponse.json({ status: 'success' });
+    if (result.status === 'success') {
+      // The ticket ID (e.g. TDT-20261003-4821) when the desk returns one, so the app/site can show it.
+      const ticketId = typeof result.ticketId === 'string' ? result.ticketId : typeof result.id === 'string' ? result.id : undefined;
+      return NextResponse.json({ status: 'success', ...(ticketId && /^[A-Z0-9-]{4,40}$/.test(ticketId) ? { ticketId } : {}) });
+    }
     return NextResponse.json({ status: 'error', message: result.message || 'Submission failed' }, { status: 502 });
   } catch (err) {
     console.error('[support] upstream failure', err);
